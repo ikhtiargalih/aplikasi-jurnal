@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if ($_SESSION['user'] != 'user') {
+  header('Location: login/login_admin.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +54,18 @@
           <li><a class="nav-link scrollto" href="absensi.php">Absensi</a></li>
           <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan</a></li>
           <li><a class="nav-link scrollto" href="profile.php">Profile</a></li>
-          <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+          <li>
+            <div class="dropdown">
+              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              😁
+              </a>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="login/login_admin.html">Login</a></li>
+                <li><a class="dropdown-item" href="controllers/logout.php">Logout</a></li>
+              </ul>
+            </div>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
