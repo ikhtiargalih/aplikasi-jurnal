@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Our Jurnal</title>
+    <title>FlexStart Bootstrap Template - Index</title>
 
     <link href="assets/img/logo.png" rel="icon">
 
@@ -55,50 +55,40 @@
     </header><!-- End Header -->
 
     <main id="main">
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team">
 
-            <div class="container p-5" data-aos="fade-up">
+            <div class="container">
 
-                <header class="section-header mt-3 mb-5">
-                    <h2>Kegiatan</h2>
-                    <p>Laporan Kegiatan Harian</p>
+                <header class="section-header mt-5 mb-5">
+                    <h2>Profile</h2>
+                    <p>Profile User</p>
                 </header>
 
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Divisi</th>
-                                <th>Tgl Pelaksanaan</th>
-                                <th>Mulai Pukul</th>
-                                <th>Selesai Pukul</th>
-                                <th>Kegiatan yang Dilakukan</th>
-                                <th>Option</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>1</th>
-                                <td>PPLG</td>
-                                <td>01-10-23</td>
-                                <td>13.00</td>
-                                <td>16.00</td>
-                                <td>Membuat Aplikasi Sederhana</td>
-                                <td>
-                                    <a href=""><i class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
+                <div class="d-flex justify-content-center">
 
-                                    <a href=""><i class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member">
+                        <div class="member-img">
+                            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h4>Walter White</h4>
+                            <span>Chief Executive Officer</span>
+                            <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
+                                Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
 
             </div>
 
-        </section><!-- End Services Section -->
+        </section><!-- End Team Section -->
 
     </main><!-- End #main -->
+
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

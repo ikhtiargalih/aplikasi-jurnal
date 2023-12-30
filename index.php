@@ -21,6 +21,10 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -40,11 +44,10 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php">About</a></li>
+          <li><a class="nav-link scrollto" href="absensi.php">Absensi</a></li>
           <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan</a></li>
-          <li><a class="nav-link scrollto" href="team.php">Team</a></li>
-          <li><a href="blog.php">Blog</a></li>
-          <li><a class="nav-link scrollto" href="contact.php">Contact</a></li>
+          <li><a class="nav-link scrollto" href="profile.php">Profile</a></li>
+          <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -58,11 +61,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Selamat Datang di <br>Our Jurnal</h1>
+          <h1 data-aos="fade-up">Selamat Datang Galih<br>di Our Jurnal</h1>
           <h2 data-aos="fade-up" data-aos-delay="400">Platform dokumentasi tentang pengalaman, pencapaian, dan pembelajaran selama masa PKL</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="about.php" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="absensi.php" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Mulai</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -78,7 +81,7 @@
   </section><!-- End Hero -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <!-- <footer id="footer" class="footer">
 
     <div class="footer-top">
       <div class="container">
@@ -112,7 +115,8 @@
         </div>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer> -->
+  <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

@@ -54,37 +54,36 @@
         </div>
     </header><!-- End Header -->
 
+    <!-- ======= Hero Section ======= -->
+
     <main id="main">
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
 
-            <div class="container p-5" data-aos="fade-up">
+            <div class="container p-4" data-aos="fade-up">
+                <div class="container p-5" data-aos="fade-up">
 
-                <header class="section-header mt-3 mb-5">
-                    <h2>Kegiatan</h2>
-                    <p>Laporan Kegiatan Harian</p>
-                </header>
+                    <header class="section-header mt-3 mb-5">
+                        <h3>Absensi</h3>
+                        <p>Absensi Kehadiran</p>
+                    </header>
 
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Divisi</th>
-                                <th>Tgl Pelaksanaan</th>
-                                <th>Mulai Pukul</th>
-                                <th>Selesai Pukul</th>
-                                <th>Kegiatan yang Dilakukan</th>
+                                <th>Tanggal</th>
+                                <th>Kehadiran</th>
+                                <th>Keterangan</th>
                                 <th>Option</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th>1</th>
-                                <td>PPLG</td>
                                 <td>01-10-23</td>
-                                <td>13.00</td>
-                                <td>16.00</td>
-                                <td>Membuat Aplikasi Sederhana</td>
+                                <td>Hadir</td>
+                                <td></td>
                                 <td>
                                     <a href=""><i class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
 
@@ -94,9 +93,11 @@
                         </tbody>
                     </table>
 
+                </div>
+
             </div>
 
-        </section><!-- End Services Section -->
+        </section><!-- End About Section -->
 
     </main><!-- End #main -->
 
