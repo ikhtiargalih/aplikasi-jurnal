@@ -3,20 +3,18 @@
 include '../config/koneksi.php';
 
 // Ambil data dari form registrasi
-$username = $_POST['username'];
-$password = md5($_POST['password']);
 $email = $_POST['email'];
 $nama = $_POST['nama'];
 $keahlian = $_POST['keahlian'];
-$tp = $_POST['tp'];
-$pkl = $_POST['pkl'];
-$napem = $_POST['napem'];
+$tempat = $_POST['tempat'];
+$tahun = $_POST['tahunPelajaran'];
 $jabatan = $_POST['jabatan'];
+$pembimbing = $_POST['pembimbing'];
 
 // Query untuk menyimpan data ke database
-$sql = mysqli_query($koneksi, "INSERT INTO users (username, password, email, nama, keahlian, tp, pkl, napem, jabatan) VALUES ('$username', '$password', '$email', '$nama', '$keahlian', '$tp', '$pkl', '$napem', '$jabatan')");
+$sql = mysqli_query($koneksi, "INSERT INTO pdf ( email, nama, keahlian, tempat, tahunPelajaran, jabatan, pembimbing) VALUES ( '$email', '$nama', '$keahlian', '$tempat', '$tahun', '$jabatan', '$pembimbing')");
 
-header('Location: ../login/login_admin.html');
+header('Location: ../login/username.html');
 
 
 ?>

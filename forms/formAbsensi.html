@@ -57,44 +57,28 @@
 
 				<div class="container bg-white box-shadow border-radius-10" style="width: 700px; height: 610px;">
 					<div class="login-title">
-						<h2 class="text-center text-primary mb-4 mt-4">Register</h2>
+						<h2 class="text-center text-primary mb-4 mt-4">Kehadiran</h2>
 					</div>
-					<form action="../controllers/register.php" method="post">
+					<form action="../controllers/absensi.php" method="post">
 						<div class="row mt-4 mb-4">
 							<div class="col">
-								<input type="text" class="form-control form-control-lg" placeholder="Nama Lengkap"
-									name="nama">
+								<input type="date" class="form-control form-control-lg" placeholder="Tanggal Hadir"
+									name="tanggal">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control form-control-lg" placeholder="Kompetensi Keahlian"
-									name="keahlian">
+                                <select class="form-control" name="kehadiran" >
+                                    <option value="">--pilih--</option>
+                                    <option value="Hadir" >Hadir</option>
+                                    <option value="Alfa">Alfa</option>
+                                    <option value="Izin">Izin</option>
+                                </select>
 							</div>
 						</div>
 						<div class="row mt-4 mb-4">
 							<div class="col">
-								<input type="text" class="form-control form-control-lg" placeholder="Tahun Pelajaran"
-									name="tahunPelajaran">
-							</div>
-							<div class="col">
-								<input type="text" class="form-control form-control-lg" placeholder="Tempat PKL"
-									name="tempat">	
-							</div>
-						</div>
-						<div class="row mt-4 mb-4">
-							<div class="col">
-								<input type="text" class="form-control form-control-lg" placeholder="Nama Pembimbing"
-								name="pembimbing">
-							</div>
-							<div class="col">
-								<input type="text" class="form-control form-control-lg" placeholder="Jabatan"
-								name="jabatan">
-							</div>
-						</div>
-						<div class="input-group custom">
-							<input type="text" class="form-control form-control-lg" placeholder="Email"
-								name="email">
-							<div class="input-group-append custom">
-								<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+								<i>tulis keterangan izin</i>
+								<input type="text" class="form-control form-control-lg" placeholder="Keterangan"
+									name="keterangan">
 							</div>
 						</div>
 						<div class="row">

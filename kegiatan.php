@@ -27,6 +27,8 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <!-- link cdn jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -63,9 +65,15 @@
                 <header class="section-header mt-3 mb-5">
                     <h2>Kegiatan</h2>
                     <p>Laporan Kegiatan Harian</p>
+                    <br>
+                    <a href="forms/formKegiatan.html">isi</a>
                 </header>
 
                     <table class="table table-hover">
+                    <?php
+                      include 'config/koneksi.php';
+                      $query = mysqli_query($koneksi, "SELECT * FROM kegiatan ORDER BY id DESc");
+                    ?>
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -78,23 +86,70 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                        $no=0;
+                            while($item=mysqli_fetch_array($query)){
+                        $no++
+                        ?>
                             <tr>
-                                <th>1</th>
-                                <td>PPLG</td>
-                                <td>01-10-23</td>
-                                <td>13.00</td>
-                                <td>16.00</td>
-                                <td>Membuat Aplikasi Sederhana</td>
+                                <th><?=$no?></th>
+                                <td><?=$item['divisi']?></td>
+                                <td><?=$item['pelaksanaan']?></td>
+                                <td><?=$item['mulai']?></td>
+                                <td><?=$item['selesai']?></td>
+                                <td><?=$item['kegiatan']?></td>
                                 <td>
-                                    <a href=""><i class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
+                                    <a href="" data-bs-toggle="modal" data-bs-target="#myModal"  onclick="ubah('<?= $item['id'] ?>')" ><i
+                                            class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
 
-                                    <a href=""><i class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
+                                    <a href="controllers/deleteKegiatan.php?id=<?= $item['id'] ?>"><i class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
                                 </td>
                             </tr>
+                            <?php
+                          }
+                        ?>
                         </tbody>
                     </table>
 
             </div>
+             <!-- The Modal -->
+             <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal Heading</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Modal body..
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+            function ubah(a) {
+
+                let url = 'forms/formUbahKegiatan.php';
+                $.post(url, {
+                id: a
+             }, function(data) {
+                 $('.modal-title').html('Keterangan');
+                 $('.modal-body').html(data);
+
+            });
+          }
+        </script>
+
 
         </section><!-- End Services Section -->
 

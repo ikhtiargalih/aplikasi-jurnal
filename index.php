@@ -77,9 +77,16 @@ if ($_SESSION['user'] != 'user') {
   <section id="hero" class="hero d-flex align-items-center">
 
     <div class="container">
+    <?php
+     include 'config/koneksi.php';
+     $query = mysqli_query($koneksi, "SELECT * FROM user ORDER BY id DESc");
+    ?>
       <div class="row">
+        <?php
+        while($item = mysqli_fetch_array($query)){
+        ?>
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Selamat Datang Galih<br>di Our Jurnal</h1>
+          <h1 data-aos="fade-up">Selamat Datang <?= $item['username'] ?><br>di Our Jurnal</h1>
           <h2 data-aos="fade-up" data-aos-delay="400">Platform dokumentasi tentang pengalaman, pencapaian, dan pembelajaran selama masa PKL</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
@@ -94,6 +101,9 @@ if ($_SESSION['user'] != 'user') {
           <img src="assets/img/hero-img.png" class="img-fluid" alt="">
         </div>
       </div>
+      <?php
+      }
+      ?>
     </div>
 
   </section><!-- End Hero -->
