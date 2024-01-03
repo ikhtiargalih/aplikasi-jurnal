@@ -27,6 +27,8 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <!-- link cdn jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -46,7 +48,8 @@
                     <li><a class="nav-link scrollto" href="absensi.php">Absensi</a></li>
                     <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan</a></li>
                     <li><a class="nav-link scrollto" href="profile.php">Profile</a></li>
-                    <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                    <li><a class="nav-link scrollto" href="#">Logout<i
+                                class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -66,9 +69,13 @@
                     <header class="section-header mt-3 mb-5">
                         <h3>Absensi</h3>
                         <p>Absensi Kehadiran</p>
+                        <a href="forms/formAbsensi.html">absen</a>
                     </header>
-
                     <table class="table table-hover">
+                        <?php
+                         include 'config/koneksi.php';
+                         $query = mysqli_query($koneksi, "SELECT * FROM absensi ORDER BY id DESc");
+                        ?>
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -79,23 +86,70 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                        $no=0;
+                            while($item=mysqli_fetch_array($query)){
+                        $no++
+                        ?>
                             <tr>
-                                <th>1</th>
-                                <td>01-10-23</td>
-                                <td>Hadir</td>
-                                <td></td>
+                                <th><?= $no?></th>
+                                <td><?= $item['tanggal']?></td>
+                                <td><?= $item['kehadiran']?></td>
+                                <td><?= $item['keterangan']?></td>
                                 <td>
-                                    <a href=""><i class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
+                                    <a href="" data-bs-toggle="modal" data-bs-target="#myModal"  onclick="ubah('<?= $item['id'] ?>')" ><i
+                                            class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
 
-                                    <a href=""><i class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
+                                    <a href="controllers/deleteAbsensi.php?id=<?= $item['id'] ?>"><i class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
                                 </td>
                             </tr>
+                            <?php
+                        }
+                        ?>
                         </tbody>
                     </table>
 
                 </div>
 
             </div>
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal Heading</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Modal body..
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+            function ubah(a) {
+
+                let url = 'forms/formUbahAbsensi.php';
+                $.post(url, {
+                id: a
+             }, function(data) {
+                 $('.modal-title').html('Keterangan');
+                 $('.modal-body').html(data);
+
+            });
+          }
+        </script>
+
 
         </section><!-- End About Section -->
 
