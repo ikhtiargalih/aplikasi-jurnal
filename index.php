@@ -1,9 +1,9 @@
 <?php
-session_start();
+// session_start();
 
-if ($_SESSION['user'] != 'user') {
-  header('Location: login/login_admin.html');
-}
+// if ($_SESSION['user'] != 'user') {
+//   header('Location: login/login_admin.html');
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +83,7 @@ if ($_SESSION['user'] != 'user') {
           <h2 data-aos="fade-up" data-aos-delay="400">Platform dokumentasi tentang pengalaman, pencapaian, dan pembelajaran selama masa PKL</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="absensi.php" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="dashboard_admin.php" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Mulai</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
