@@ -42,10 +42,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
-                    <li><a class="nav-link scrollto" href="absensi.php">Absensi</a></li>
-                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan</a></li>
-                    <li><a class="nav-link scrollto" href="profile.php">Profile</a></li>
+                    <li><a class="nav-link scrollto active" href="index.php">Home <i class="fa-solid fa-house"></i></a></li>
+                    <li><a class="nav-link scrollto" href="absensi.php">Absensi <i class="fa-solid fa-user-check"></i></a></li>
+                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i class="fa-solid fa-user-clock"></i></a></li>
+                    <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a></li>
                     <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

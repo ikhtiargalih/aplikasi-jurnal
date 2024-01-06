@@ -10,9 +10,7 @@
     <link href="assets/img/logo.png" rel="icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -37,19 +35,18 @@
     <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span>Our Jurnal</span>
             </a>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
-                    <li><a class="nav-link scrollto" href="absensi.php">Absensi</a></li>
-                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan</a></li>
-                    <li><a class="nav-link scrollto" href="profile.php">Profile</a></li>
-                    <li><a class="nav-link scrollto" href="#">Logout<i
-                                class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                    <li><a class="nav-link scrollto active" href="index.php">Home <i class="fa-solid fa-house"></i></a></li>
+                    <li><a class="nav-link scrollto" href="absensi.php">Absensi <i class="fa-solid fa-user-check"></i></a></li>
+                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i class="fa-solid fa-user-clock"></i></a></li>
+                    <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a></li>
+                    <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -63,14 +60,14 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
 
-            <div class="container p-4" data-aos="fade-up">
                 <div class="container p-5" data-aos="fade-up">
 
                     <header class="section-header mt-3 mb-5">
                         <h3>Absensi</h3>
                         <p>Absensi Kehadiran</p>
-                        <a href="forms/formAbsensi.html">absen</a>
+                        
                     </header>
+                    <a class="btn btn-outline-primary mb-3" href="forms/formAbsensi.html">Absen <i class="fa-solid fa-file-import"></i></a>
                     <table class="table table-hover">
                         <?php
                          include 'config/koneksi.php';
@@ -110,8 +107,7 @@
                     </table>
 
                 </div>
-
-            </div>
+                
             <!-- The Modal -->
             <div class="modal" id="myModal">
                 <div class="modal-dialog">

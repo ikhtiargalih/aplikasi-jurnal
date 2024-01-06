@@ -44,10 +44,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
-                    <li><a class="nav-link scrollto" href="absensi.php">Absensi</a></li>
-                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan</a></li>
-                    <li><a class="nav-link scrollto" href="profile.php">Profile</a></li>
+                    <li><a class="nav-link scrollto active" href="index.php">Home <i class="fa-solid fa-house"></i></a></li>
+                    <li><a class="nav-link scrollto" href="absensi.php">Absensi <i class="fa-solid fa-user-check"></i></a></li>
+                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i class="fa-solid fa-user-clock"></i></a></li>
+                    <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a></li>
                     <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -65,10 +65,8 @@
                 <header class="section-header mt-3 mb-5">
                     <h2>Kegiatan</h2>
                     <p>Laporan Kegiatan Harian</p>
-                    <br>
-                    <a href="forms/formKegiatan.html">isi</a>
                 </header>
-
+                <a class="btn btn-outline-primary mb-3" href="forms/formKegiatan.html">Isi Kegiatan <i class="fa-solid fa-file-signature"></i></a>
                     <table class="table table-hover">
                     <?php
                       include 'config/koneksi.php';
