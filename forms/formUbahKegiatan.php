@@ -1,7 +1,7 @@
 <?php
     $id= $_POST['id'];
     include '../config/koneksi.php';
-    $query= mysqli_query($koneksi, "SELECT * FROM kegiatan WHERE id='$id'" )
+    $query= mysqli_query($koneksi, "SELECT * FROM kegiatan WHERE id_kegiatan='$id'" )
 ?>
 
 <div class="container">
@@ -9,7 +9,7 @@
         while($item=mysqli_fetch_array($query)){    
     ?>
     <h3 class="text-center text-primary mb-4 mt-4">Edit Data</h3>
-    <form action="controllers/ubahKegiatan.php" method="post">
+    <form action="controllers/ubahKegiatan.php" method="POST">
         <div class="row g-2 mt-4 mb-4">
             <div class="form-floating col-6 mb-4">
                 <input type="text" class="form-control form-control-lg" value="<?=$item['divisi']?>" name="divisi">
