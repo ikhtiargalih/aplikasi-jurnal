@@ -44,7 +44,10 @@ if ($_SESSION['user'] != 'user') {
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
+    <?php
+     include 'config/koneksi.php';
+     $query = mysqli_query($koneksi, "SELECT * FROM user ORDER BY id_user DESC");
+?>
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span>Our Jurnal</span>
@@ -57,7 +60,7 @@ if ($_SESSION['user'] != 'user') {
           <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i class="fa-solid fa-user-clock"></i></a></li>
           <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a></li>
           <li>
-            <div class="dropdown">
+            <div class="dropdown">                                                                                               
               <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 😁
@@ -80,10 +83,6 @@ if ($_SESSION['user'] != 'user') {
   <section id="hero" class="hero d-flex align-items-center">
 
     <div class="container">
-      <?php
-     include 'config/koneksi.php';
-     $query = mysqli_query($koneksi, "SELECT * FROM user ORDER BY id DESc");
-    ?>
       <div class="row">
         <?php
         while($item = mysqli_fetch_array($query)){

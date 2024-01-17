@@ -1,7 +1,7 @@
 <?php
-    $id= $_POST['id'];
+    $id = $_POST['id'];
     include '../config/koneksi.php';
-    $query= mysqli_query($koneksi, "SELECT * FROM absensi WHERE id='$id'" )
+    $query= mysqli_query($koneksi, "SELECT * FROM absensi WHERE id_absensi='$id'" )
 ?>
 
 <div class="container">
@@ -11,9 +11,9 @@
 	<h2 class="text-center text-primary mb-4 mt-4">Edit Data</h2>
 	<form action="controllers/ubahAbsensi.php" method="post">
 
-		<div class="row g-2 mt-5">
+		<div class="row g-2 mt-5"> 
 			<div class="form-floating mb-4 col-6">
-				<input type="date" class="form-control form-control-lg" value="<?=$item['tanggal']?>" name="tanggal">
+				<input type="date" class="form-control form-control-lg" value="<?=$item['tanggal']?>"  name="tanggal">
 			</div>
 			<div class="form-floating mb-4 col-6">
 				<select class="form-select" name="kehadiran">

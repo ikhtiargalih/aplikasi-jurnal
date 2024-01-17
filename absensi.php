@@ -1,3 +1,39 @@
+<?php
+ include 'config/koneksi.php';
+ $semuaData= mysqli_query($koneksi, "SELECT * FROM absensi ORDER BY id_absensi DESC");
+// kofigusari fagination
+$jumlahData = 10;
+$totalData = mysqli_num_rows($semuaData);
+$jumlahPagination = ceil($totalData / $jumlahData);
+
+if (isset($_GET['halaman'])){
+    $slideAktif = $_GET['halaman'];
+}else {
+    $slideAktif = 1;
+}
+
+$dataAwal = ($slideAktif * $jumlahData) - $jumlahData;
+
+$jumlahLink = 3;
+if ($slideAktif > $jumlahLink) {
+    $star_number = $slideAktif - $jumlahLink;
+} else {
+    $star_number = 1;
+}
+
+if ($slideAktif < ($jumlahPagination - $jumlahLink)) {
+    $end_number = $slideAktif + $jumlahLink;
+} else {
+    $end_number = $jumlahPagination; 
+}
+
+
+// <!-- end -->
+$jumlahPerhalaman = mysqli_query($koneksi, "SELECT * FROM absensi LIMIT $dataAwal,$jumlahData");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +46,9 @@
     <link href="assets/img/logo.png" rel="icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -26,7 +64,8 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
     <!-- link cdn jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -42,11 +81,16 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.php">Home <i class="fa-solid fa-house"></i></a></li>
-                    <li><a class="nav-link scrollto" href="absensi.php">Absensi <i class="fa-solid fa-user-check"></i></a></li>
-                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i class="fa-solid fa-user-clock"></i></a></li>
-                    <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a></li>
-                    <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                    <li><a class="nav-link scrollto active" href="index.php">Home <i class="fa-solid fa-house"></i></a>
+                    </li>
+                    <li><a class="nav-link scrollto" href="absensi.php">Absensi <i
+                                class="fa-solid fa-user-check"></i></a></li>
+                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i
+                                class="fa-solid fa-user-clock"></i></a></li>
+                    <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#">Logout<i
+                                class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -60,54 +104,88 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
 
-                <div class="container p-5" data-aos="fade-up">
+            <div class="container p-5" data-aos="fade-up">
 
-                    <header class="section-header mt-3 mb-5">
-                        <h3>Absensi</h3>
-                        <p>Absensi Kehadiran</p>
-                        
-                    </header>
-                    <a class="btn btn-outline-primary mb-3" href="forms/formAbsensi.html">Absen <i class="fa-solid fa-file-import"></i></a>
-                    <table class="table table-hover">
-                        <?php
-                         include 'config/koneksi.php';
-                         $query = mysqli_query($koneksi, "SELECT * FROM absensi ORDER BY id DESc");
-                        ?>
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Kehadiran</th>
-                                <th>Keterangan</th>
-                                <th>Option</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                        $no=0;
-                            while($item=mysqli_fetch_array($query)){
-                        $no++
-                        ?>
-                            <tr>
-                                <th><?= $no?></th>
-                                <td><?= $item['tanggal']?></td>
-                                <td><?= $item['kehadiran']?></td>
-                                <td><?= $item['keterangan']?></td>
-                                <td>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#myModal"  onclick="ubah('<?= $item['id'] ?>')" ><i
-                                            class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
+                <header class="section-header mt-3 ">
+                    <h3>Absensi</h3>
+                    <p>Absensi Kehadiran</p>
 
-                                    <a href="controllers/deleteAbsensi.php?id=<?= $item['id'] ?>"><i class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                        </tbody>
-                    </table>
+                </header>
+                <div class="row">
+                    <div class="col-4"><a class="btn btn-outline-primary mb-3" href="forms/formAbsensi.html">Absen <i
+                                class="fa-solid fa-file-import"></i></a></div>
 
                 </div>
-                
+                <table class="table table-hover">
+                <?php
+                      include 'config/koneksi.php';
+                      $sql = mysqli_query($koneksi, "SELECT * FROM absensi ORDER BY id_absensi DESC");
+                    ?>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal</th>
+                            <th>Kehadiran</th>
+                            <th>Keterangan</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no=0 + $dataAwal;
+                            while($item=mysqli_fetch_assoc($jumlahPerhalaman )){
+                        $no++
+                        ?>
+                        <tr>
+                            <th><?= $no?></th>
+                            <td><?= $item['tanggal']?></td>
+                            <td><?= $item['kehadiran']?></td>
+                            <td><?= $item['keterangan']?></td>
+                            <td>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#myModal"
+                                    onclick="ubah('<?= $item['id_absensi'] ?>')"><i
+                                        class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
+
+                                <a href="controllers/deleteAbsensi.php?id=<?= $item['id_absensi'] ?>"><i
+                                        class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
+                            </td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+
+                <nav aria-label="">
+                    <ul class="pagination justify-content-end">
+                        <!-- pagination -->
+                        <?php if($slideAktif > 1):?>
+                        <a href="?halaman=<?php echo $slideAktif - 1?>">
+                            Back
+                        </a>
+                        <?php endif ;?>
+                        <?php for($no=$star_number ; $no <= $end_number; $no++):?>
+
+                        <?php if($slideAktif == $no):?>
+                        <a href="?halaman=<?php echo $no ;?> " style="color:white;background-color:blue;font-weight:bold;">
+                            <?php echo $no ;?>
+                        </a>
+                        <?php else: ?>
+                        <a href="?halaman=<?php echo $no ;?> ">
+                            <?php echo $no ;?>
+                        </a>
+                        <?php endif ; ?>
+                        <?php endfor ;?>
+                        <?php if($slideAktif < $jumlahPagination):?>
+                        <a href="?halaman=<?php echo $slideAktif + 1?>">
+                            Next
+                        </a>
+                        <?php endif ;?>
+                        <!-- end -->
+                    </ul>
+                </nav>
+            </div>
+
             <!-- The Modal -->
             <div class="modal" id="myModal">
                 <div class="modal-dialog">
@@ -133,18 +211,18 @@
                 </div>
             </div>
             <script>
-            function ubah(a) {
+                function ubah(a) {
 
-                let url = 'forms/formUbahAbsensi.php';
-                $.post(url, {
-                id: a
-             }, function(data) {
-                 $('.modal-title').html('Keterangan');
-                 $('.modal-body').html(data);
+                    let url = 'forms/formUbahAbsensi.php';
+                    $.post(url, {
+                        id: a
+                    }, function (data) {
+                        $('.modal-title').html('Keterangan');
+                        $('.modal-body').html(data);
 
-            });
-          }
-        </script>
+                    });
+                }
+            </script>
 
 
         </section><!-- End About Section -->

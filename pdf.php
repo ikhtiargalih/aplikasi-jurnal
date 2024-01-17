@@ -61,93 +61,60 @@
         <section id="services" class="services">
 
             <div class="container p-5" data-aos="fade-up">
-
+                <?php
+                 require_once 'config/koneksi.php';
+                 $sql= mysqli_query($koneksi, "SELECT * FROM pdf ORDER BY id_pdf ASC");
+                 ?> 
                 <header class="section-header mt-3 mb-5">
                     <h2>Kegiatan</h2>
                     <p>Laporan Kegiatan Harian</p>
                 </header>
-                <a class="btn btn-outline-primary mb-3" href="forms/formKegiatan.html">Isi Kegiatan <i class="fa-solid fa-file-signature"></i></a>
-                    <table class="table table-hover">
-                    <?php
-                      include 'config/koneksi.php';
-                      $query = mysqli_query($koneksi, "SELECT * FROM kegiatan ORDER BY id_kegiatan DESC");
-                    ?>
+                <div class="cotainer">
+                    <div class="row">
+                    <?php                                                                                                                                                                                                                                                                                                                                                                           
+                            while($item=mysqli_fetch_array($sql)){
+                        ?>
+                        <div class="col-6">
+                            <p>Nama               :<?=$item['nama']?></p>
+                            <p>Kepetensi Keahlian :<?=$item['keahlian']?></p>
+                            <p>Tahun Pelajaran    :<?=$item['tahunPelajaran']?></p>
+                        </div>
+                        <div class="col-6">
+                            <p>Tempat PKL         :<?=$item['tempat']?></p>
+                            <p>Nama Pembimbing    :<?=$item['pembimbing']?></p>
+                            <p>Jabatan            :<?=$item['jabatan']?></p>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Divisi</th>
-                                <th>Tgl Pelaksanaan</th>
-                                <th>Mulai Pukul</th>
-                                <th>Selesai Pukul</th>
-                                <th>Kegiatan yang Dilakukan</th>
-                                <th>Option</th>
+                                <th>Divisi / <br> Departemen</th>
+                                <th>Hari/Tgl<br> Pelaksanaan</th>
+                                <th>Mulai<br> Pukul</th>
+                                <th>Selesai<br> Pukul</th>
+                                <th>Kegiatan yang <br> Dilakukan</th>
+                                <th>Catatan<br>Pembebimbing</th>
+                                <th>Paraf<br>Pembimbing</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php
-                        $no=0;                                                                                                                                                                                                                                                                                                                                                                              
-                            while($item=mysqli_fetch_array($query)){
-                        $no++
-                        ?>
                             <tr>
-                                <th><?=$no?></th>
-                                <td><?=$item['divisi']?></td>
-                                <td><?=$item['pelaksanaan']?></td>
-                                <td><?=$item['mulai']?></td> 
-                                <td><?=$item['selesai']?></td>
-                                <td><?=$item['kegiatan']?></td>
+                                <th></th>
+                                <td></td>
+                                <td></td>
+                                <td></td> 
+                                <td></td>
+                                <td></td>
                                 <td>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#myModal"  onclick="ubah('<?= $item['id_kegiatan'] ?>')" ><i
-                                            class="btn btn-outline-primary fa-solid fa-pen-to-square"></i></a>
-
-                                    <a href="controllers/deleteKegiatan.php?id=<?= $item['id_kegiatan'] ?>"><i class="btn btn-outline-danger fa-solid fa-circle-xmark ms-3"></i></a>
                                 </td>
                             </tr>
-                            <?php
-                          }
-                        ?>
                         </tbody>
                     </table>
 
             </div>
-             <!-- The Modal -->
-             <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Modal Heading</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            Modal body..
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <script>
-            function ubah(a) {
-
-                let url = 'forms/formUbahKegiatan.php';
-                $.post(url, {
-                id: a
-             }, function(data) {
-                 $('.modal-title').html('Keterangan');
-                 $('.modal-body').html(data);
-
-            });
-          }
-        </script>
-
 
         </section><!-- End Services Section -->
 

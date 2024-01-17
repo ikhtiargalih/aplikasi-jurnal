@@ -1,3 +1,9 @@
+<?php
+// $id= $_POST['id_pdf'];
+include 'config/koneksi.php';
+$query= mysqli_query($koneksi, "SELECT * FROM pdf ORDER BY id_pdf DESC" )
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,11 +48,16 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.php">Home <i class="fa-solid fa-house"></i></a></li>
-                    <li><a class="nav-link scrollto" href="absensi.php">Absensi <i class="fa-solid fa-user-check"></i></a></li>
-                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i class="fa-solid fa-user-clock"></i></a></li>
-                    <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a></li>
-                    <li><a class="nav-link scrollto" href="#">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                    <li><a class="nav-link scrollto active" href="index.php">Home <i class="fa-solid fa-house"></i></a>
+                    </li>
+                    <li><a class="nav-link scrollto" href="absensi.php">Absensi <i
+                                class="fa-solid fa-user-check"></i></a></li>
+                    <li><a class="nav-link scrollto" href="kegiatan.php">Kegiatan <i
+                                class="fa-solid fa-user-clock"></i></a></li>
+                    <li><a class="nav-link scrollto" href="profile.php">Profile <i class="fa-solid fa-user"></i></a>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#">Logout<i
+                                class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -64,23 +75,28 @@
                     <h2>Profile</h2>
                     <p>Profile User</p>
                 </header>
-
                 <div class="d-flex justify-content-center">
-
-                <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="member">
-                        <div class="member-img">
-                            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="member-info">
-                            <h4>Walter White</h4>
-                            <span>Chief Executive Officer</span>
-                            <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
-                                Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+                    <?php
+                    while($item=mysqli_fetch_array($query)){
+                ?>
+                    <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member">
+                            <div class="member-img">
+                                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4><form action="pdf.php?id=<?= $item['id_pdf'] ?>" method="POST">
+                                <button><?= $item['nama']?></button>
+                            
+                               </form></h4>
+                                <span><?= $item['keahlian']?></span>
+                                <p>“Saya adalah Siswa SMk WIKRAMA BOGOR jurusan Programan Parangkat Lunak Dan Gim .</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                    <?php
+                    }
+                    ?>
                 </div>
 
             </div>
